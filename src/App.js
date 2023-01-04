@@ -3,52 +3,56 @@ import "../src/style.css";
 import { useState } from "react";
 
 const App = () => {
-const [total,settotal]=useState(0)
-  const [current,setcurrent]=useState({name:"",
-  partner:"",
-totals:0})
-  const [data,setdata]=useState([])
-  
-  const ChangeHandler=(e)=>{
+  const [total, settotal] = useState(0);
+  const [current, setcurrent] = useState({ name: "", partner: "", totals: 0 });
+  const [data, setdata] = useState([]);
+
+  const ChangeHandler = (e) => {
     setcurrent({
       ...current,
       [e.target.name]: e.target.value,
-      
     });
-    
-  }
-      localStorage.setItem("data", JSON.stringify(data));
-      let datas = JSON.parse(localStorage.getItem("data"));
-  const LoveHandler = (e) => {
-    e.preventDefault()
-    
-   let newData= {
-      ...current,
-      totals: Math.floor(Math.random() * 100),
-    }
-    setdata([...data,newData])
-    
-    
-    console.log("datas",datas)
-    for(var i=0;i<datas.length;i++){
-if (
-  e.target[0].value === datas[i].name &&
-  e.target[1].value === datas[i].partner
-) 
-   {console.log("hello");} 
-  
- else {
-  newData = {
-    ...current,
-    totals: Math.floor(Math.random() * 100),
   };
-  console.log("new data");
-  setdata([...data, newData]);
-}
+  useEffect(() => {
+    
+  }, [input]);
+  localStorage.setItem("data", JSON.stringify(data));
+  const LoveHandler = (e) => {
+    e.preventDefault();
+    console.log("hello");
+    if (current.name.trim() !== "" && current.partner.trim() !== "") {
+      let datas = JSON.parse(localStorage.getItem("data"));
+      console.log("data", datas);
+      if (datas.length > 0) {
+        datas.forEach((e) => {
+          settotal(e.totals);
+          if (
+            datas.name === current.name &&
+            datas.partner === current.partner
+          ) {
+            console.log(datas.totals);
+          } else {
+            let newData = {
+              ...current,
+              totals: Math.floor(Math.random() * 100),
+            };
+            console.log("new data");
+            setdata([...data, newData]);
+          }
+        });
+      } else {
+        let newData = {
+          ...current,
+          totals: Math.floor(Math.random() * 100),
+        };
+        console.log("new data 2");
+        setdata([...data, newData]);
+      }
+    } else {
+      alert("enter the correct detail");
     }
-      
-    }
-  
+  };
+
   return (
     <form className="main" onSubmit={LoveHandler}>
       <img
@@ -78,7 +82,7 @@ if (
           onChange={ChangeHandler}
         />
         <div>
-          <div className="per">{current.totals} %</div>
+          <div className="per">{total} %</div>
           <button className="btn">Calculate your Love%❤️</button>
         </div>
       </div>
