@@ -1,0 +1,81 @@
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main{
+    height: 100vh;
+    width: 209.7vh;
+    background-color: pink;
+    overflow: hidden;
+
+}
+.mains{
+    height: 100vh;
+    width: 132.7vh;
+
+}
+#leftimg{
+    height: 99%;
+    width: 35%;
+    position: absolute;
+    left: 65%;
+}
+.content{
+    height: 50%;
+    position: absolute;
+    top:30%;
+    width: 44%;
+    /* background-color: red; */
+    left:17%;
+   
+}
+.partner{
+    height: 5vh;
+    margin-top: 10px;
+    border-radius: 5px;
+    text-align: center;
+    width: 20vw;
+    margin-left: 10px;
+}
+.name {
+    height: 5vh;
+    margin-top: 10px;
+    border-radius: 5px;
+    text-align: center;
+    width: 20vw;
+    margin-left: 10px;
+}
+.per{
+    font-size: 50px;
+    margin-top: 25px;
+    position: relative;
+   left: 45%;
+   transform: translate(0%,-40);
+
+}
+.btn{
+    margin-top: 25px;
+    height: 5vh;
+    width: 11vw;
+    padding: 5px;
+    text-align: center;
+    position: relative;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,10%);
+    border-radius: 5px;
+
+}
+h2{
+    font-size: 45px;
+    font-family: Voyage-Bold;
+    position: relative;
+    top:-10%;
+    
+}
+@media screen and (min-width: 480px) {
+    
+
+}
